@@ -1,0 +1,15 @@
+.App {
+  background: rgb(1, 76, 105);
+  width: 95%;
+  height: 100vh;
+  margin: auto;
+  padding-top: 1rem;
+
+  text-decoration: none;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 2rem;
+  color: #fff;
+}

@@ -1,0 +1,8 @@
+.main-header {
+    text-align: center;
+    color: rgb(250, 242, 249);
+    font-size: 2rem;
+   text-align: center;
+   border-bottom: 1px dotted #fff;
+   padding: .5rem 0
+}
