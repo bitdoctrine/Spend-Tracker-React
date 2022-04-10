@@ -4,9 +4,9 @@ const router = express.Router();
 router.get('/previous', (req, res) => {
     const str = [{
         "Date": new Date().getDate(),
-        'Name': 'Some Item',
-        'Price': 'Some Number'
-    }, {'Date': 'some date', 'price': 'some price', 'name': 'some name'}]
+        "name": 'Some Item',
+        "price": 'Some Number'
+    }, {'Date': 'some date', 'price': 'some number', 'name': 'some name'}]
     res.end(JSON.stringify(str));
 });
 
