@@ -5,3 +5,12 @@
     margin: auto;
     padding-top: 1rem;
 }
+
+.entry {
+    display: flex;
+    width: 90%;
+    margin: 2rem auto;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+}
