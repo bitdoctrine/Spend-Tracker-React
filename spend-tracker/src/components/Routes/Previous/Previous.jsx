@@ -22,8 +22,8 @@ function Previous(props) {
         <Header text="Spend Tracker" />
         {records.map((record) => (
           <div className="entry">
-            <h1>{record.Date}</h1>
-            <h1>{record.name}</h1>
+            {/* <h1>{record.purchaseDatae}</h1> */}
+            <h1>{record.itemName}</h1>
             <h1>{record.price}</h1>
           </div>
         ))}

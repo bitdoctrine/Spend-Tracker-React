@@ -27,9 +27,9 @@ const expense3 = new Expense({
 
 const defaultExpenses = [expense1, expense2, expense3]
 
-
+//Add Expense Backend Format
 router.get('/addExpense', async(req, res) => {
-const expense = {itemName: 'Food', price: 5}
+const expense = {itemName: 'Water', price: 3}
 const newExpense = new Expense(expense);
 
   try {
@@ -44,17 +44,31 @@ const newExpense = new Expense(expense);
 })
 
 
-//Expense Schema
+//Read Expense Backend Format
+
+router.get('/readExpenses', (req, res) => {
+    Expense.find({}, function(err, result) {
+        if(err) {
+            console.log('An error has occured');
+            res.end(`Couldn't fetch data`);
+        } else {
+            console.log(result);
+            res.end(JSON.stringify(result));
+        }
+    })
+})
 
 
 
 router.get('/previous', (req, res) => {
-    const str = [{
-        "Date": new Date().getDate(),
-        "name": 'Some Item',
-        "price": 'Some Number'
-    }, {'Date': 'some date', 'price': 'some number', 'name': 'some name'}]
-    res.end(JSON.stringify(str));
+    Expense.find({}, function(err, result) {
+        if(err) {
+            console.log('An error occured');
+        } else {
+            console.log('Success');
+            res.end(JSON.stringify(result));
+        }
+    })
 });
 
 router.post('/addExpense', (req, res) => {
