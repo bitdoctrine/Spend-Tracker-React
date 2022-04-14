@@ -1,15 +1,15 @@
 const { urlencoded, json } = require('body-parser');
 const express  = require('express');
 const routesHandler = require('./routes/handler.js');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 require('dotenv/config');
 const app = express();
 
 // app.use(urlencoded({extended: false}));
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json());
-app.use('/', routesHandler.router);
+app.use(urlencoded({extended: false}))
+app.use(json());
+app.use('/', routesHandler);
 
 //DB CONNECTION
 mongoose.connect(process.env.DB_URI, {

@@ -4,28 +4,21 @@ const mongoose = require("mongoose");
 
 
 const expenseSchema = new mongoose.Schema({
-    purchaseDatae: {type: Date, default: Date.now},
+    purchaseDatae: {type: Date, default: new Date().toLocaleDateString()},
     itemName: {type: String, required: true},
     price: {type: Number, required: true}
 })
 
+const previousSchema = new mongoose.Schema({
+    date: {type: Date, default: new Date().toLocaleDateString()},
+    dailyEntry: expenseSchema,
+})
+
+const Day = mongoose.model('Day', previousSchema);
+
 
 const Expense  = mongoose.model('Expense', expenseSchema);
 
-const expense1 = new Expense({
-    itemName: 'Some name', price: 500
-})
-
-
-const expense2 = new Expense({
-    itemName: 'Some name', price: 500
-})
-
-const expense3 = new Expense({
-    itemName: 'Some name', price: 500
-})
-
-const defaultExpenses = [expense1, expense2, expense3]
 
 //Add Expense Backend Format
 router.get('/addExpense', async(req, res) => {
@@ -59,6 +52,18 @@ router.get('/readExpenses', (req, res) => {
 })
 
 
+router.get('/deleteAll', (req, res) => {
+    Expense.deleteMany({}, (err, result) => {
+        if(err) {
+            res.end('An error has occured');
+        } else {
+            res.end(
+                'All data deleted Successfully'
+            )
+        }
+    })
+})
+
 
 router.get('/previous', (req, res) => {
     Expense.find({}, function(err, result) {
@@ -72,8 +77,8 @@ router.get('/previous', (req, res) => {
 });
 
 router.post('/addExpense', (req, res) => {
-    res.end("Waiting");
+
 });
 
 
-module.exports = {router: router, defaultExpenses: defaultExpenses};
+module.exports = router
